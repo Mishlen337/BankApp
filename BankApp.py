@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 import config
 from PyQt5.QtWidgets import QApplication, QMainWindow , QPushButton , QWidget, QFileDialog

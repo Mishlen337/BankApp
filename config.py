@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 excel_path = ''
 background_color_list = ["white", "blue", "green"]
 authorization_db_path = '/Users/mikhailisakov/BankDB/BankApp/verification.db'
