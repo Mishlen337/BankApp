@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/AuthorizationWindow.ui'
+# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/AuthorizationWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_AuthorizationWindow(object):
     def setupUi(self, AuthorizationWindow):
         AuthorizationWindow.setObjectName("AuthorizationWindow")
-        AuthorizationWindow.resize(1159, 533)
+        AuthorizationWindow.resize(663, 419)
         self.centralwidget = QtWidgets.QWidget(AuthorizationWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -23,10 +23,10 @@ class Ui_AuthorizationWindow(object):
         self.HeadingLabel.setMinimumSize(QtCore.QSize(0, 50))
         self.HeadingLabel.setMaximumSize(QtCore.QSize(16777215, 50))
         self.HeadingLabel.setObjectName("HeadingLabel")
-        self.verticalLayout.addWidget(self.HeadingLabel)
+        self.verticalLayout.addWidget(self.HeadingLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.DescriptionLabel = QtWidgets.QLabel(self.centralwidget)
         self.DescriptionLabel.setObjectName("DescriptionLabel")
-        self.verticalLayout.addWidget(self.DescriptionLabel)
+        self.verticalLayout.addWidget(self.DescriptionLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignBottom)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.ClientPushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -42,14 +42,10 @@ class Ui_AuthorizationWindow(object):
         self.verticalLayout.addLayout(self.horizontalLayout_6)
         self.AuthorizationHeadingLabel = QtWidgets.QLabel(self.centralwidget)
         self.AuthorizationHeadingLabel.setMinimumSize(QtCore.QSize(0, 50))
-        self.AuthorizationHeadingLabel.setMaximumSize(QtCore.QSize(250, 50))
+        self.AuthorizationHeadingLabel.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.AuthorizationHeadingLabel.setText("")
         self.AuthorizationHeadingLabel.setObjectName("AuthorizationHeadingLabel")
-        self.verticalLayout.addWidget(self.AuthorizationHeadingLabel)
-        self.AuthorizationDescriptionLabel = QtWidgets.QLabel(self.centralwidget)
-        self.AuthorizationDescriptionLabel.setMinimumSize(QtCore.QSize(200, 50))
-        self.AuthorizationDescriptionLabel.setMaximumSize(QtCore.QSize(250, 50))
-        self.AuthorizationDescriptionLabel.setObjectName("AuthorizationDescriptionLabel")
-        self.verticalLayout.addWidget(self.AuthorizationDescriptionLabel)
+        self.verticalLayout.addWidget(self.AuthorizationHeadingLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignBottom)
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.UsernameLabel = QtWidgets.QLabel(self.centralwidget)
@@ -69,6 +65,7 @@ class Ui_AuthorizationWindow(object):
         self.PasswordLabel.setObjectName("PasswordLabel")
         self.horizontalLayout_5.addWidget(self.PasswordLabel)
         self.PasswordLineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.PasswordLineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.PasswordLineEdit.setObjectName("PasswordLineEdit")
         self.horizontalLayout_5.addWidget(self.PasswordLineEdit)
         self.verticalLayout.addLayout(self.horizontalLayout_5)
@@ -100,8 +97,6 @@ class Ui_AuthorizationWindow(object):
         self.DescriptionLabel.setText(_translate("AuthorizationWindow", "Обязательно нажмите одну из кнопок перед вводом логина и пароля!"))
         self.ClientPushButton.setText(_translate("AuthorizationWindow", "Клиент"))
         self.AdminPushButton.setText(_translate("AuthorizationWindow", "Админ"))
-        self.AuthorizationHeadingLabel.setText(_translate("AuthorizationWindow", "Авторизация"))
-        self.AuthorizationDescriptionLabel.setText(_translate("AuthorizationWindow", "Введите ваш логин и пароль."))
         self.UsernameLabel.setText(_translate("AuthorizationWindow", "Username:"))
         self.PasswordLabel.setText(_translate("AuthorizationWindow", "Password:"))
         self.BackPushButton.setText(_translate("AuthorizationWindow", "Назад"))

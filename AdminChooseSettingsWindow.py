@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/ChooseReportWindow.ui'
+# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/AdminChooseSettingsWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ChooseReportWindow(object):
-    def setupUi(self, ChooseReportWindow):
-        ChooseReportWindow.setObjectName("ChooseReportWindow")
-        ChooseReportWindow.resize(451, 205)
-        self.centralwidget = QtWidgets.QWidget(ChooseReportWindow)
+class Ui_AdminChooseSettingsWindow(object):
+    def setupUi(self, AdminChooseSettingsWindow):
+        AdminChooseSettingsWindow.setObjectName("AdminChooseSettingsWindow")
+        AdminChooseSettingsWindow.resize(628, 233)
+        self.centralwidget = QtWidgets.QWidget(AdminChooseSettingsWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -26,6 +26,11 @@ class Ui_ChooseReportWindow(object):
         self.verticalLayout.addWidget(self.HeadingLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.SettingsPushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.SettingsPushButton.setMinimumSize(QtCore.QSize(0, 50))
+        self.SettingsPushButton.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.SettingsPushButton.setObjectName("SettingsPushButton")
+        self.horizontalLayout.addWidget(self.SettingsPushButton, 0, QtCore.Qt.AlignTop)
         self.BankPushButton = QtWidgets.QPushButton(self.centralwidget)
         self.BankPushButton.setMinimumSize(QtCore.QSize(0, 50))
         self.BankPushButton.setMaximumSize(QtCore.QSize(16777215, 50))
@@ -42,18 +47,19 @@ class Ui_ChooseReportWindow(object):
         self.BackPushButton.setMaximumSize(QtCore.QSize(200, 50))
         self.BackPushButton.setObjectName("BackPushButton")
         self.verticalLayout.addWidget(self.BackPushButton)
-        ChooseReportWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(ChooseReportWindow)
+        AdminChooseSettingsWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(AdminChooseSettingsWindow)
         self.statusbar.setObjectName("statusbar")
-        ChooseReportWindow.setStatusBar(self.statusbar)
+        AdminChooseSettingsWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(ChooseReportWindow)
-        QtCore.QMetaObject.connectSlotsByName(ChooseReportWindow)
+        self.retranslateUi(AdminChooseSettingsWindow)
+        QtCore.QMetaObject.connectSlotsByName(AdminChooseSettingsWindow)
 
-    def retranslateUi(self, ChooseReportWindow):
+    def retranslateUi(self, AdminChooseSettingsWindow):
         _translate = QtCore.QCoreApplication.translate
-        ChooseReportWindow.setWindowTitle(_translate("ChooseReportWindow", "Выбор формы отчета"))
-        self.HeadingLabel.setText(_translate("ChooseReportWindow", "Выберите форму отчета"))
-        self.BankPushButton.setText(_translate("ChooseReportWindow", "Отчет для одного банка"))
-        self.BankListPushButton.setText(_translate("ChooseReportWindow", "Отчет для нескольких банков"))
-        self.BackPushButton.setText(_translate("ChooseReportWindow", "Назад"))
+        AdminChooseSettingsWindow.setWindowTitle(_translate("AdminChooseSettingsWindow", "Выбор настроек"))
+        self.HeadingLabel.setText(_translate("AdminChooseSettingsWindow", "Выберите настройки"))
+        self.SettingsPushButton.setText(_translate("AdminChooseSettingsWindow", "Изменить настройки"))
+        self.BankPushButton.setText(_translate("AdminChooseSettingsWindow", "Отчет для одного банка"))
+        self.BankListPushButton.setText(_translate("AdminChooseSettingsWindow", "Отчет для нескольких банков"))
+        self.BackPushButton.setText(_translate("AdminChooseSettingsWindow", "Назад"))

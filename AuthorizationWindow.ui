@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1159</width>
-    <height>533</height>
+    <width>663</width>
+    <height>419</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
+    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
      <widget class="QLabel" name="HeadingLabel">
       <property name="minimumSize">
        <size>
@@ -34,7 +34,7 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
      <widget class="QLabel" name="DescriptionLabel">
       <property name="text">
        <string>Обязательно нажмите одну из кнопок перед вводом логина и пароля!</string>
@@ -83,7 +83,7 @@
       </item>
      </layout>
     </item>
-    <item>
+    <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
      <widget class="QLabel" name="AuthorizationHeadingLabel">
       <property name="minimumSize">
        <size>
@@ -93,31 +93,12 @@
       </property>
       <property name="maximumSize">
        <size>
-        <width>250</width>
+        <width>16777215</width>
         <height>50</height>
        </size>
       </property>
       <property name="text">
-       <string>Авторизация</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="AuthorizationDescriptionLabel">
-      <property name="minimumSize">
-       <size>
-        <width>200</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>250</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Введите ваш логин и пароль.</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -167,7 +148,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="PasswordLineEdit"/>
+       <widget class="QLineEdit" name="PasswordLineEdit">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
