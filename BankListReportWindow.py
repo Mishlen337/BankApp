@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankListReportWindow.ui'
+# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/BankListReportWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -25,6 +25,12 @@ class Ui_BankListReportWindow(object):
         self.HeadingLabel.setMinimumSize(QtCore.QSize(200, 50))
         self.HeadingLabel.setObjectName("HeadingLabel")
         self.verticalLayout.addWidget(self.HeadingLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.StatusLabel = QtWidgets.QLabel(self.centralwidget)
+        self.StatusLabel.setMinimumSize(QtCore.QSize(0, 50))
+        self.StatusLabel.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.StatusLabel.setText("")
+        self.StatusLabel.setObjectName("StatusLabel")
+        self.verticalLayout.addWidget(self.StatusLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.DescriptionTextBrowser = QtWidgets.QTextBrowser(self.centralwidget)
         self.DescriptionTextBrowser.setMinimumSize(QtCore.QSize(100, 0))
         self.DescriptionTextBrowser.setMaximumSize(QtCore.QSize(16777215, 150))

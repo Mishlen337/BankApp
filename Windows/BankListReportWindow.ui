@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BankReportWindow</class>
- <widget class="QMainWindow" name="BankReportWindow">
+ <class>BankListReportWindow</class>
+ <widget class="QMainWindow" name="BankListReportWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>450</height>
+    <height>470</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,15 +19,15 @@
   <property name="maximumSize">
    <size>
     <width>700</width>
-    <height>500</height>
+    <height>470</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Создание отчета для одного банка</string>
+   <string>Создание отчета для нескольких банков</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
-    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
      <widget class="QLabel" name="HeadingLabel">
       <property name="minimumSize">
        <size>
@@ -40,7 +40,26 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+     <widget class="QLabel" name="StatusLabel">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item alignment="Qt::AlignTop">
      <widget class="QTextBrowser" name="DescriptionTextBrowser">
       <property name="minimumSize">
        <size>
@@ -48,22 +67,27 @@
         <height>0</height>
        </size>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>150</height>
+       </size>
+      </property>
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Список возможных банков представлен в окне справа ниже.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Список возможных банков представлен ниже справа. &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Можете выбрать несколько, в частности один или все.&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Минимальная возможная дата: 01.01.2018.&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Максимальная возможная дата: 31.12.2018.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Максимальная возможная дата: 31.12.2018.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="topMargin">
-       <number>2</number>
-      </property>
       <item>
        <widget class="QLabel" name="BankNameLabel">
         <property name="minimumSize">
@@ -79,96 +103,38 @@ p, li { white-space: pre-wrap; }
          </size>
         </property>
         <property name="text">
-         <string>Выберите название банка:</string>
+         <string>Выберите названия банков:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="BankNameComboBox">
-        <property name="minimumSize">
-         <size>
-          <width>300</width>
-          <height>50</height>
-         </size>
-        </property>
-       </widget>
+       <widget class="QComboBox" name="ListBankNameComboBox"/>
       </item>
      </layout>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QLabel" name="StartDateLabel">
+       <widget class="QLabel" name="DateLabel">
         <property name="minimumSize">
          <size>
-          <width>250</width>
+          <width>200</width>
           <height>50</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>250</width>
+          <width>200</width>
           <height>50</height>
          </size>
         </property>
         <property name="text">
-         <string>Выберите дату начала отчета:</string>
+         <string>Выберите дату отчета:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDateEdit" name="StartDateEdit">
-        <property name="maximumDate">
-         <date>
-          <year>2018</year>
-          <month>11</month>
-          <day>30</day>
-         </date>
-        </property>
-        <property name="minimumDate">
-         <date>
-          <year>2018</year>
-          <month>1</month>
-          <day>1</day>
-         </date>
-        </property>
-        <property name="displayFormat">
-         <string>MM.yyyy</string>
-        </property>
-        <property name="date">
-         <date>
-          <year>2018</year>
-          <month>1</month>
-          <day>1</day>
-         </date>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
-       <widget class="QLabel" name="EndDateLabel">
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>250</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Выберите дату окончания отчета: </string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QDateEdit" name="EndDateEdit">
+       <widget class="QDateEdit" name="DateEdit">
         <property name="maximumDate">
          <date>
           <year>2018</year>
@@ -179,26 +145,19 @@ p, li { white-space: pre-wrap; }
         <property name="minimumDate">
          <date>
           <year>2018</year>
-          <month>2</month>
+          <month>1</month>
           <day>1</day>
          </date>
         </property>
         <property name="displayFormat">
          <string>MM.yyyy</string>
         </property>
-        <property name="date">
-         <date>
-          <year>2018</year>
-          <month>2</month>
-          <day>1</day>
-         </date>
-        </property>
        </widget>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
        <widget class="QPushButton" name="BackPushButton">
         <property name="minimumSize">

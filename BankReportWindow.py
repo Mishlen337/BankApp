@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankReportWindow.ui'
+# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/BankReportWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -14,9 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_BankReportWindow(object):
     def setupUi(self, BankReportWindow):
         BankReportWindow.setObjectName("BankReportWindow")
-        BankReportWindow.resize(600, 450)
+        BankReportWindow.resize(700, 530)
         BankReportWindow.setMinimumSize(QtCore.QSize(600, 450))
-        BankReportWindow.setMaximumSize(QtCore.QSize(700, 500))
+        BankReportWindow.setMaximumSize(QtCore.QSize(700, 530))
         self.centralwidget = QtWidgets.QWidget(BankReportWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -25,6 +25,12 @@ class Ui_BankReportWindow(object):
         self.HeadingLabel.setMinimumSize(QtCore.QSize(200, 50))
         self.HeadingLabel.setObjectName("HeadingLabel")
         self.verticalLayout.addWidget(self.HeadingLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.StatusLabel = QtWidgets.QLabel(self.centralwidget)
+        self.StatusLabel.setMinimumSize(QtCore.QSize(0, 50))
+        self.StatusLabel.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.StatusLabel.setText("")
+        self.StatusLabel.setObjectName("StatusLabel")
+        self.verticalLayout.addWidget(self.StatusLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.DescriptionTextBrowser = QtWidgets.QTextBrowser(self.centralwidget)
         self.DescriptionTextBrowser.setMinimumSize(QtCore.QSize(100, 0))
         self.DescriptionTextBrowser.setObjectName("DescriptionTextBrowser")

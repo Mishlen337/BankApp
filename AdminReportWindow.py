@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/ReportWindow.ui'
+# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/AdminReportWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ReportWindow(object):
-    def setupUi(self, ReportWindow):
-        ReportWindow.setObjectName("ReportWindow")
-        ReportWindow.resize(798, 594)
-        self.centralwidget = QtWidgets.QWidget(ReportWindow)
+class Ui_AdminReportWindow(object):
+    def setupUi(self, AdminReportWindow):
+        AdminReportWindow.setObjectName("AdminReportWindow")
+        AdminReportWindow.resize(800, 509)
+        self.centralwidget = QtWidgets.QWidget(AdminReportWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -42,29 +42,23 @@ class Ui_ReportWindow(object):
         self.BackPushButton.setMaximumSize(QtCore.QSize(200, 50))
         self.BackPushButton.setObjectName("BackPushButton")
         self.horizontalLayout.addWidget(self.BackPushButton)
-        self.ExportPushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.ExportPushButton.setMinimumSize(QtCore.QSize(250, 50))
-        self.ExportPushButton.setMaximumSize(QtCore.QSize(300, 50))
-        self.ExportPushButton.setObjectName("ExportPushButton")
-        self.horizontalLayout.addWidget(self.ExportPushButton)
         self.QuitPushButton = QtWidgets.QPushButton(self.centralwidget)
         self.QuitPushButton.setMinimumSize(QtCore.QSize(150, 50))
         self.QuitPushButton.setMaximumSize(QtCore.QSize(200, 50))
         self.QuitPushButton.setObjectName("QuitPushButton")
         self.horizontalLayout.addWidget(self.QuitPushButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        ReportWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(ReportWindow)
+        AdminReportWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(AdminReportWindow)
         self.statusbar.setObjectName("statusbar")
-        ReportWindow.setStatusBar(self.statusbar)
+        AdminReportWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(ReportWindow)
-        QtCore.QMetaObject.connectSlotsByName(ReportWindow)
+        self.retranslateUi(AdminReportWindow)
+        QtCore.QMetaObject.connectSlotsByName(AdminReportWindow)
 
-    def retranslateUi(self, ReportWindow):
+    def retranslateUi(self, AdminReportWindow):
         _translate = QtCore.QCoreApplication.translate
-        ReportWindow.setWindowTitle(_translate("ReportWindow", "Вывод отчета"))
-        self.HeadingLabel.setText(_translate("ReportWindow", "Вывод отчета с заданными вами ранее параметрами"))
-        self.BackPushButton.setText(_translate("ReportWindow", "Назад"))
-        self.ExportPushButton.setText(_translate("ReportWindow", "Экспортировать в Ecxel"))
-        self.QuitPushButton.setText(_translate("ReportWindow", "Выйти"))
+        AdminReportWindow.setWindowTitle(_translate("AdminReportWindow", "Вывод отчета"))
+        self.HeadingLabel.setText(_translate("AdminReportWindow", "Вывод отчета с заданными вами ранее параметрами"))
+        self.BackPushButton.setText(_translate("AdminReportWindow", "Назад"))
+        self.QuitPushButton.setText(_translate("AdminReportWindow", "Выйти"))

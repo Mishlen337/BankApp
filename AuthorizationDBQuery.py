@@ -1,7 +1,7 @@
 from sqlalchemy import *
-
+import config
 def client_verification(username:str, password:str)->bool:
-    engine = create_engine('sqlite:///verification.db')
+    engine = create_engine(f'sqlite:///{config.authorization_db_path}')
     meta = MetaData()
     client = Table('Client', meta, autoload_with=engine)
     with engine.connect() as conn:
@@ -13,7 +13,7 @@ def client_verification(username:str, password:str)->bool:
         return False
 
 def admin_verification(username:str, password:str)->bool:
-    engine = create_engine('sqlite:///verification.db')
+    engine = create_engine(f'sqlite:///{config.authorization_db_path}')
     meta = MetaData()
     client = Table('Admin', meta, autoload_with=engine)
     with engine.connect() as conn:

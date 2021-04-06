@@ -1,6 +1,6 @@
-import sys  # sys нужен для передачи argv в QApplication
-import time 
-from PyQt5.QtWidgets import QApplication, QMainWindow , QPushButton , QWidget
+import sys
+import config
+from PyQt5.QtWidgets import QApplication, QMainWindow , QPushButton , QWidget, QFileDialog
 import AuthorizationWindow
 import ChooseReportWindow
 import BankReportWindow
@@ -8,34 +8,37 @@ import BankListReportWindow
 import ReportWindow
 import AuthorizationDBQuery
 import AdminChooseSettingsWindow
+import AdminReportWindow
+import SettingsWindow
 class MainWindow(QMainWindow):
     def __init__(self):
-        # Это здесь нужно для доступа к переменным, методам
-        # и т.д. в файле design.py
         super().__init__()
         self.Authorization = AuthorizationWindow.Ui_AuthorizationWindow()
         self.ChooseReport = ChooseReportWindow.Ui_ChooseReportWindow()
         self.AdminChooseSettings = AdminChooseSettingsWindow.Ui_AdminChooseSettingsWindow()
         self.Report = ReportWindow.Ui_ReportWindow()
+        self.AdminReport = AdminReportWindow.Ui_AdminReportWindow()
         self.BankReport = BankReportWindow.Ui_BankReportWindow()
         self.BankListReport = BankListReportWindow.Ui_BankListReportWindow()
+        self.Settings = SettingsWindow.Ui_SettingsWindow()
         self.startUIAuthorization()
 
     def startUIAuthorization(self):
         self.Authorization.setupUi(self)
         self.Authorization.AdminPushButton.clicked.connect(self.adminAuthorization)
         self.Authorization.ClientPushButton.clicked.connect(self.clientAuthorization)
+        self.Authorization.QuitPushButton.clicked.connect(self.quitApp)
         self.show()
 
     def adminAuthorization(self):
         self.Authorization.AuthorizationHeadingLabel.setText("Введите пароль админа")
-        self.Authorization.ClientPushButton.setStyleSheet("background-color: rgb(255, 255, 255)")
+        self.Authorization.ClientPushButton.setStyleSheet(f"background-color: {config.background_color}")
         self.Authorization.AdminPushButton.setStyleSheet("background-color: red")
         self.Authorization.EnterPushButton.clicked.connect(self.checkAdminAuthorization)
 
     def clientAuthorization(self):
         self.Authorization.AuthorizationHeadingLabel.setText("Введите пароль клиента")
-        self.Authorization.AdminPushButton.setStyleSheet("background-color: rgb(255, 255, 255)")
+        self.Authorization.AdminPushButton.setStyleSheet(f"background-color: {config.background_color}")
         self.Authorization.ClientPushButton.setStyleSheet("background-color: red")
         self.Authorization.EnterPushButton.clicked.connect(self.checkClientAuthorization)
 
@@ -60,6 +63,7 @@ class MainWindow(QMainWindow):
         self.AdminChooseSettings.BankPushButton.clicked.connect(self.startUIAdminBankReport)
         self.AdminChooseSettings.BankListPushButton.clicked.connect(self.startUIAdminBankListReport)
         self.AdminChooseSettings.BackPushButton.clicked.connect(self.startUIAuthorization)
+        self.AdminChooseSettings.SettingsPushButton.clicked.connect(self.startUIAdminSettings)
         self.show()
 
     def startUIChooseReport(self):
@@ -72,14 +76,36 @@ class MainWindow(QMainWindow):
     def startUIAdminBankReport(self):
         self.BankReport.setupUi(self)
         self.BankReport.BackPushButton.clicked.connect(self.startUIAdminChooseSettings)
-        self.BankReport.FormPushButton.clicked.connect(self.startUIFormBankReport)
+        self.BankReport.FormPushButton.clicked.connect(self.startUIAdminFormBankReport)
         self.show()
 
     def startUIAdminBankListReport(self):
         self.BankListReport.setupUi(self)
         self.BankListReport.BackPushButton.clicked.connect(self.startUIAdminChooseSettings)
-        self.BankListReport.FormPushButton.clicked.connect(self.startUIFormBankListReport)
+        self.BankListReport.FormPushButton.clicked.connect(self.startUIAdminFormBankListReport)
         self.show()
+
+    def startUIAdminSettings(self):
+        self.Settings.setupUi(self)
+        self.Settings.BackPushButton.clicked.connect(self.startUIAdminChooseSettings)
+        self.Settings.PathPushButton.clicked.connect(self.OnPathPushButton)
+        self.Settings.SizeComboBox.addItems(config.size_list)
+        self.Settings.BackgoundComboBox.addItems(config.background_color_list)
+        self.Settings.ApplyDesignPushButton.clicked.connect(self.OnApplyDesignPushButton)
+
+    def OnPathPushButton(self):
+        directory = QFileDialog.getExistingDirectory(
+            self, 'Select a directory','.')
+        self.Settings.PathLine.setText(directory)
+        self.Settings.ApplyPathPushButton.clicked.connect(self.OnApplyPathPushButton)
+
+    def OnApplyPathPushButton(self):
+        config.excel_path = self.Settings.PathLine.text()
+
+    def OnApplyDesignPushButton(self):
+        config.size = int(self.Settings.SizeComboBox.currentText())
+        config.background_color = self.Settings.BackgoundComboBox.currentText()
+        self.setStyleSheet(f"background-color: {config.background_color};font-size: {config.size}px;")
 
     def startUIBankReport(self):
         self.BankReport.setupUi(self)
@@ -93,28 +119,51 @@ class MainWindow(QMainWindow):
         self.BankListReport.FormPushButton.clicked.connect(self.startUIFormBankListReport)
         self.show()
 
+    def startUIAdminFormBankReport(self):
+        self.AdminReport.setupUi(self)
+        #TODO Admin querying to DB for Bank report
+        self.AdminReport.BackPushButton.clicked.connect(self.startUIAdminBankReport)
+        self.AdminReport.QuitPushButton.clicked.connect(self.quitApp)
+        self.show()
+    
+    def startUIAdminFormBankListReport(self):
+        self.AdminReport.setupUi(self)
+        #TODO Admin querying to DB for Bank report
+        self.AdminReport.BackPushButton.clicked.connect(self.startUIAdminBankListReport)
+        self.AdminReport.QuitPushButton.clicked.connect(self.quitApp)
+        self.show()
+    
     def startUIFormBankReport(self):
         self.Report.setupUi(self)
         #TODO querying to DB for Bank report
         self.Report.BackPushButton.clicked.connect(self.startUIBankReport)
         self.Report.QuitPushButton.clicked.connect(self.quitApp)
+        self.Report.ExportPushButton.clicked.connect(self.exportReportBank)
         self.show()
     
-
     def startUIFormBankListReport(self):
         self.Report.setupUi(self)
         #TODO querying to DB for BankList report
         self.Report.BackPushButton.clicked.connect(self.startUIBankListReport)
         self.Report.QuitPushButton.clicked.connect(self.quitApp)
+        self.Report.ExportPushButton.clicked.connect(self.exportReportBankList)
         self.show()
+
+    def exportReportBank(self):
+        self.Report.StatusLabel.setText(f"Экспорт данных произошел успешно в папку {config.excel_path}")
+        #TODO exporting Bank report to Excelfile 
+    
+    def exportReportBankList(self):
+        self.Report.StatusLabel.setText(f"Экспорт данных произошел успешно в папку {config.excel_path}")
+        #TODO exporting Bank report to Excelfile 
 
     def quitApp(self):
         raise SystemExit(1)
     
 def main():
-    app = QApplication(sys.argv)  # Новый экземпляр QApplication
-    window = MainWindow()  # Создаём объект класса BankApp
-    app.exec_()  # и запускаем приложение
+    app = QApplication(sys.argv) 
+    window = MainWindow() 
+    app.exec_()
 
-if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем
-    main()  # то запускаем функцию main()
+if __name__ == '__main__': 
+    main() 
