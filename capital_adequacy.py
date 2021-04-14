@@ -7,7 +7,7 @@ import config
 def get_bank_own_capital(name: str, date: datetime):
     bank_own_capital = 0
     engine = create_engine(
-        'mysql+pymysql://root:mikisa234!@127.0.0.1:3306/bank')
+        config.bank_db_path)
     meta = MetaData(schema="bank")
     bank = Table('f101', meta, autoload_with=engine)
     with engine.connect() as conn:
@@ -43,7 +43,7 @@ def get_bank_own_capital(name: str, date: datetime):
 def get_working_assets(name: str, date: datetime):
     working_assets = 0
     engine = create_engine(
-        'mysql+pymysql://root:mikisa234!@127.0.0.1:3306/bank')
+       config.bank_db_path)
     meta = MetaData(schema="bank")
     bank = Table('f101', meta, autoload_with=engine)
     with engine.connect() as conn:

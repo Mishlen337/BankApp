@@ -7,7 +7,7 @@ import config
 def get_highly_liquid_assets(name: str, date: datetime):
     highly_liquid_assets = 0
     engine = create_engine(
-        'mysql+pymysql://root:mikisa234!@127.0.0.1:3306/bank')
+        config.bank_db_path)
     meta = MetaData(schema="bank")
     bank = Table('f101', meta, autoload_with=engine)
     with engine.connect() as conn:
@@ -37,7 +37,7 @@ def get_highly_liquid_assets(name: str, date: datetime):
 def get_on_call_liabilities(name: str, date: datetime):
     on_call_liabilities = 0
     engine = create_engine(
-        'mysql+pymysql://root:mikisa234!@127.0.0.1:3306/bank')
+        config.bank_db_path)
     meta = MetaData(schema="bank")
     bank = Table('f101', meta, autoload_with=engine)
     with engine.connect() as conn:
