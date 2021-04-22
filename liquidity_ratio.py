@@ -87,3 +87,26 @@ def get_capital_adequacy(name: str, date: datetime) -> int:
     return int(highly_liquid_assets/on_call_liabilities*100)
 
 #print(get_capital_adequacy('Тинькофф',datetime.strptime("01.01.2018", "%d.%m.%Y")))
+def get(name: str, date: datetime):
+    engine = create_engine(
+        config.bank_db_path)
+    meta = MetaData(schema="bank")
+    bank = Table('f123', meta, autoload_with=engine)
+    with engine.connect() as conn:
+        result = conn.execute(select(bank.c.C1, bank.c.C2_1).filter(and_(bank.c.NAME_B.contains(name),bank.c.C2_1.contains("Обязательства до востребования"))))
+        rows = result.fetchall()      
+        for row in rows:
+            print(row)  
+
+def get2(name: str, date: datetime):
+    engine = create_engine(
+        config.bank_db_path)
+    meta = MetaData(schema="bank")
+    bank = Table('req', meta, autoload_with=engine)
+    with engine.connect() as conn:
+        result = conn.execute(select(bank.c.NAME_B, bank.c.CODE, bank.c.NAME).filter(and_( bank.c.PRSTR == 130, bank.c.NAME_B.contains(name))))
+        rows = result.fetchall()      
+        for row in rows:
+            print(row)  
+
+get2("Сбер",datetime.strptime("01.01.2018", "%d.%m.%Y"))
