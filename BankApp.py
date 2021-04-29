@@ -1,16 +1,9 @@
 # -*- coding: utf-8 -*-
 import sys
 import config
-from PyQt5.QtWidgets import QApplication, QMainWindow , QPushButton , QWidget, QFileDialog
-import AuthorizationWindow
-import ChooseReportWindow
-import BankReportWindow
-import BankListReportWindow
-import ReportWindow
 import AuthorizationDBQuery
-import AdminChooseSettingsWindow
-import AdminReportWindow
-import SettingsWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow , QPushButton , QWidget, QFileDialog
+from forms import AuthorizationWindow, ChooseReportWindow, BankReportWindow, BankListReportWindow, ReportWindow, AdminChooseSettingsWindow, AdminReportWindow, SettingsWindow
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
