@@ -148,6 +148,7 @@ def form_bank_list(db_engine: engine, connection: engine.Connection, meta: MetaD
     db_date = _parse_date(b_date)
     _check_mart_existence(db_engine, meta)
     ratios = _mart_bank_list(connection, meta, names, db_date)
+    print("Calculated ratios")
     print(ratios)
     _insert_bank_list(connection, meta, ratios, db_date)
 
@@ -160,6 +161,7 @@ def form_bank(db_engine: engine, connection: engine.Connection, meta: MetaData,
     b_dates = _parse_gap_dates(start_date, end_date)
     _check_mart_existence(db_engine, meta)
     ratios = _mart_bank(connection, meta, name, b_dates)
+    print("Calculated ratios")
     print(ratios)
     _insert_bank(connection, meta, ratios, name)
         
