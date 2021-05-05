@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/BankListReportWindow.ui'
+# Form implementation generated from reading ui file '/Users/mikhailisakov/BankDB/BankApp/Windows/BankListReportWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -14,9 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_BankListReportWindow(object):
     def setupUi(self, BankListReportWindow):
         BankListReportWindow.setObjectName("BankListReportWindow")
-        BankListReportWindow.resize(600, 470)
+        BankListReportWindow.resize(600, 624)
         BankListReportWindow.setMinimumSize(QtCore.QSize(600, 450))
-        BankListReportWindow.setMaximumSize(QtCore.QSize(700, 470))
+        BankListReportWindow.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.centralwidget = QtWidgets.QWidget(BankListReportWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -43,10 +43,11 @@ class Ui_BankListReportWindow(object):
         self.BankNameLabel.setMaximumSize(QtCore.QSize(200, 50))
         self.BankNameLabel.setObjectName("BankNameLabel")
         self.horizontalLayout.addWidget(self.BankNameLabel)
-        self.ListBankNameComboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.ListBankNameComboBox.setObjectName("ListBankNameComboBox")
-        self.horizontalLayout.addWidget(self.ListBankNameComboBox)
         self.verticalLayout.addLayout(self.horizontalLayout)
+        self.BankListWidget = QtWidgets.QListWidget(self.centralwidget)
+        self.BankListWidget.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
+        self.BankListWidget.setObjectName("BankListWidget")
+        self.verticalLayout.addWidget(self.BankListWidget)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.DateLabel = QtWidgets.QLabel(self.centralwidget)

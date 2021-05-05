@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import sys
-import config
-import AuthorizationDBQuery
+import bank_db_query
+import pandas as pd
+from bank_analize import AuthorizationDBQuery, TableBank
+from bank_analize import config
 from PyQt5.QtWidgets import QApplication, QMainWindow , QPushButton , QWidget, QFileDialog
-from forms import AuthorizationWindow, ChooseReportWindow, BankReportWindow, BankListReportWindow, ReportWindow, AdminChooseSettingsWindow, AdminReportWindow, SettingsWindow
+from bank_analize.forms import AuthorizationWindow, ChooseReportWindow, BankReportWindow, BankListReportWindow, ReportWindow, AdminChooseSettingsWindow, AdminReportWindow, SettingsWindow
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -104,52 +106,53 @@ class MainWindow(QMainWindow):
     def startUIBankReport(self):
         self.BankReport.setupUi(self)
         self.BankReport.BackPushButton.clicked.connect(self.startUIChooseReport)
-        self.BankReport.FormPushButton.clicked.connect(self.startUIFormBankReport)
+        self.BankReport.FormPushButton.clicked.connect(self.calculateBankReport)
+        self.BankReport.BankNameComboBox.addItems(bank_db_query.bank_names_query())
         self.show()
+
+    def calculateBankReport(self):
+        start_date = self.BankReport.StartDateEdit.text()
+        end_date = self.BankReport.EndDateEdit.text()
+        bank = self.BankReport.BankNameComboBox.currentText()
+        data = pd.DataFrame(bank_db_query.bank_query(bank, start_date, end_date), columns = config.columns)
+        self.startUIFormReport(data)
 
     def startUIBankListReport(self):
         self.BankListReport.setupUi(self)
         self.BankListReport.BackPushButton.clicked.connect(self.startUIChooseReport)
-        self.BankListReport.FormPushButton.clicked.connect(self.startUIFormBankListReport)
+        self.BankListReport.FormPushButton.clicked.connect(self.calculateBankListReport)
+        self.BankListReport.BankListWidget.addItems(bank_db_query.bank_names_query())
         self.show()
+
+    def calculateBankListReport(self):
+        bank_list = [item.text() for item in self.BankListReport.BankListWidget.selectedItems()]
+        b_date = self.BankListReport.DateEdit.text()
+        data = pd.DataFrame(bank_db_query.bank_list_query(bank_list, b_date), columns = config.columns)
+        self.startUIFormReport(data)
 
     def startUIAdminFormBankReport(self):
         self.AdminReport.setupUi(self)
-        #TODO Admin querying to DB for Bank report
         self.AdminReport.BackPushButton.clicked.connect(self.startUIAdminBankReport)
         self.AdminReport.QuitPushButton.clicked.connect(self.quitApp)
         self.show()
     
     def startUIAdminFormBankListReport(self):
         self.AdminReport.setupUi(self)
-        #TODO Admin querying to DB for Bank report
         self.AdminReport.BackPushButton.clicked.connect(self.startUIAdminBankListReport)
         self.AdminReport.QuitPushButton.clicked.connect(self.quitApp)
         self.show()
     
-    def startUIFormBankReport(self):
+    def startUIFormReport(self, data: pd.DataFrame):
         self.Report.setupUi(self)
-        #TODO querying to DB for Bank report
         self.Report.BackPushButton.clicked.connect(self.startUIBankReport)
         self.Report.QuitPushButton.clicked.connect(self.quitApp)
-        self.Report.ExportPushButton.clicked.connect(self.exportReportBank)
-        self.show()
-    
-    def startUIFormBankListReport(self):
-        self.Report.setupUi(self)
-        #TODO querying to DB for BankList report
-        self.Report.BackPushButton.clicked.connect(self.startUIBankListReport)
-        self.Report.QuitPushButton.clicked.connect(self.quitApp)
-        self.Report.ExportPushButton.clicked.connect(self.exportReportBankList)
+        self.Report.ExportPushButton.clicked.connect(lambda: self.exportReport(data))
+        self.Report.TableView.setModel(TableBank.TableModel(data))
         self.show()
 
-    def exportReportBank(self):
+    def exportReport(self, data: pd.DataFrame):
         self.Report.StatusLabel.setText(f"Экспорт данных произошел успешно в папку {config.excel_path}")
-        #TODO exporting Bank report to Excelfile 
-    
-    def exportReportBankList(self):
-        self.Report.StatusLabel.setText(f"Экспорт данных произошел успешно в папку {config.excel_path}")
-        #TODO exporting Bank report to Excelfile 
+        data.to_excel(f"{config.excel_path}/output.xlsx")
 
     def quitApp(self):
         raise SystemExit(1)

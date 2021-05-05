@@ -19,5 +19,3 @@ with engine.connect() as conn:
     #form_bank(engine, conn, meta, 'АО "МАЙКОПБАНК"', "01.2018", "07.2018")
     #print("Report")
     #print(get_mart.get_bank_mart(conn, meta, 'АО "МАЙКОПБАНК"', "01.2018", "07.2018"))
-    
-

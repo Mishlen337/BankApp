@@ -1,5 +1,5 @@
 from sqlalchemy import *
-import config
+from bank_analize import config
 def client_verification(username:str, password:str)->bool:
     engine = create_engine(f'sqlite:///{config.authorization_db_path}')
     meta = MetaData()
