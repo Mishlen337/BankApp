@@ -1,6 +1,12 @@
-from sqlalchemy import *
+# -*- coding: utf-8 -*-
+"""Module for authorize users: client, admin"""
+from sqlalchemy import create_engine, MetaData, Table, select
 from bank_analize import config
 def client_verification(username:str, password:str)->bool:
+    """
+    Recieves useraname and password.
+    Checks client login and password in database.
+    """
     engine = create_engine(f'sqlite:///{config.authorization_db_path}')
     meta = MetaData()
     client = Table('Client', meta, autoload_with=engine)
@@ -13,6 +19,10 @@ def client_verification(username:str, password:str)->bool:
         return False
 
 def admin_verification(username:str, password:str)->bool:
+    """
+    Recieves useraname and password.
+    Checks admin login and password in database.
+    """
     engine = create_engine(f'sqlite:///{config.authorization_db_path}')
     meta = MetaData()
     client = Table('Admin', meta, autoload_with=engine)
@@ -23,5 +33,3 @@ def admin_verification(username:str, password:str)->bool:
         if row:
             return True
         return False
-
-#print(client_verification('Mikhail','123'))

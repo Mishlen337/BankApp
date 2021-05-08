@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 import pandas as pd
 
 class TableModel(QtCore.QAbstractTableModel):
-
     def __init__(self, data):
         super(TableModel, self).__init__()
         self._data = data
@@ -21,7 +21,6 @@ class TableModel(QtCore.QAbstractTableModel):
         return self._data.shape[1]
 
     def headerData(self, section, orientation, role):
-        # section is the index of the column/row.
         if role == Qt.DisplayRole:
             if orientation == Qt.Horizontal:
                 return str(self._data.columns[section])
