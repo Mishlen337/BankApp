@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConnectionWindow</class>
+ <widget class="QDialog" name="ConnectionWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>437</width>
+    <height>121</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Соединение с бд</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="HeadingLabel">
+     <property name="text">
+      <string>Введите название соединения с бд: user:password@host/dbname</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="StatusLabel">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="ConnInput"/>
+   </item>
+   <item>
+    <widget class="QPushButton" name="EnterPushButton">
+     <property name="text">
+      <string>Подтвердить</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

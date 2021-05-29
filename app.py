@@ -1,11 +1,9 @@
-#!/Users/mikhailisakov/BankDB/BankApp/env/bin/python 
-#sys.path.insert(0, '/Users/mikhailisakov/BankDB/BankApp/app')
-from widgets import authorization
+from widgets import connection
 from PyQt5.QtWidgets import QApplication
-
 if __name__ == '__main__':
+    """Главная функция приложения"""
     app = QApplication([])
-    window = authorization.Authorization()
+    window = connection.Connection()
     window.show()
-    # Start the event loop.
+    #Start the event loop.
     app.exec()

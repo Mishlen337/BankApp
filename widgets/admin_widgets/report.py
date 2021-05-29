@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
+"""
+Модуль для объявления виджета просотра отчета
+"""
 import sys
-sys.path.insert(0, '/Users/mikhailisakov/BankDB/BankApp')
+sys.path.insert(0, '.')
 from PyQt5 import QtWidgets, uic
 from widgets.common_widgets import table_view
+
 
 class BankReport(QtWidgets.QDialog):
     def __init__(self, *args, **kwargs):
@@ -11,11 +15,11 @@ class BankReport(QtWidgets.QDialog):
         """
         super().__init__(*args, kwargs['parent'])
         uic.loadUi('./ui/admin_ui/AdminReportWindow.ui', self)
-        #Данные таблицы с банками и расчитанными для них коэффициентами
+        # Данные таблицы с банками и расчитанными для них коэффициентами
         data = kwargs['data']
-        #Инициализация кнопок формы просмотра отчета
+        # Инициализация кнопок формы просмотра отчета
         self.QuitPushButton.clicked.connect(self.quitApp)
-        #Запись данных в просматриваемую таблицу
+        # Запись данных в просматриваемую таблицу
         self.TableView.setModel(table_view.TableModel(data))
 
     def quitApp(self):
